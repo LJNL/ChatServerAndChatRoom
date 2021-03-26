@@ -1,7 +1,3 @@
-//
-// Created by Sixzeroo on 2018/6/8.
-//
-
 #ifndef SRC_LOG_H
 #define SRC_LOG_H
 

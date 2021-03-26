@@ -1,7 +1,3 @@
-//
-// Created by Sixzeroo on 2018/6/4.
-//
-
 #ifndef CHARROOM_SOCKET_EPOLL_H
 #define CHARROOM_SOCKET_EPOLL_H
 
@@ -62,6 +58,7 @@ public:
 
     void set_bind_ip(const std::string &_bind_ip);
 
+    //日志
     void set_backlog(int _backlog);
 
     void set_port(int _port);

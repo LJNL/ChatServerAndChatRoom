@@ -1,7 +1,3 @@
-//
-// Created by Sixzeroo on 2018/6/8.
-//
-
 #include <cstdlib>
 #include <ctime>
 #include <fstream>

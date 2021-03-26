@@ -1,7 +1,3 @@
-//
-// Created by Sixzeroo on 2018/6/4.
-//
-
 #include <cstdlib>
 #include <cstdio>
 #include <string>
@@ -123,8 +119,9 @@ int SocketEpoll::create_epoll() {
         // LOG ERROR
         return -1;
     }
-
-    int epollfd = epoll_create(1024);
+    
+    int size=1024;
+    int epollfd = epoll_create(size);
     if(epollfd == -1)
     {
         // LOG ERROR
@@ -159,6 +156,7 @@ int SocketEpoll::handle_accept_event(const int &epollfd, epoll_event &event, Soc
 
     struct sockaddr_in client_addr;
     socklen_t client_addr_len = sizeof(struct sockaddr_in);
+    //指向该套接字的文件描述符
     int client_fd = accept(sockfd, (struct sockaddr *)&client_addr, &client_addr_len);
     if(client_fd < 0)
     {
@@ -185,6 +183,7 @@ int SocketEpoll::handle_accept_event(const int &epollfd, epoll_event &event, Soc
     struct epoll_event ev;
     ev.data.fd = client_fd;
     ev.data.ptr = epoll_context;
+    //to do
     ev.events = EPOLLIN | EPOLLET | EPOLLONESHOT;  // EPOLLONESHOT模式
     if(epoll_ctl(epollfd, EPOLL_CTL_ADD, client_fd, &ev) == -1)
     {
@@ -258,7 +257,7 @@ int SocketEpoll::add_listen_sock_to_epoll() {
 
     struct epoll_event ev;
     ev.data.fd = _listen_socket;
-    ev.events = EPOLLIN;  // 边沿出发模式
+    ev.events = EPOLLIN; 
     if(epoll_ctl(_epollfd, EPOLL_CTL_ADD, _listen_socket, &ev) == -1)
     {
         // LOG ERROR

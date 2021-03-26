@@ -1,8 +1,8 @@
 CC = g++
 DEBUG = -g -Wall
-STD = c++11
-OBJS = server.o parse.o socket_epoll.o log.o config.o
-OBJC = client.o parse.o log.o config.o
+STD = c++14
+OBJS = server.o parse.o socket_epoll.o log.o config.o RespondFromServer.o
+OBJC = client.o parse.o log.o config.o RequestFromClient.o
 DEP_INCLUDE_PATH= -I ./
 
 ALL: server client

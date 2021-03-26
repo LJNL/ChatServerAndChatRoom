@@ -1,7 +1,3 @@
-//
-// Created by Sixzeroo on 2018/6/7.
-//
-
 #include <string.h>
 #include <iostream>
 #include <sys/types.h>
@@ -30,8 +26,8 @@ int Msg::send_diy(int fd) {
     return 0;
 }
 
+static char buf[BUFF_SIZE];
 int Msg::recv_diy(int fd) {
-    char buf[BUFF_SIZE];
     bzero(buf, sizeof(buf));
     ssize_t len = recv(fd, buf, BUFF_SIZE, 0);
 
